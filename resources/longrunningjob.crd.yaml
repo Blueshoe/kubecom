@@ -20,6 +20,8 @@ spec:
           properties:
             args:
               type: array
+              items:
+                type: string
             kwargs:
               type: object
               x-kubernetes-preserve-unknown-fields: true
