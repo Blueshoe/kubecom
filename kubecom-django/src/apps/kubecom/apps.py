@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class KubecomConfig(AppConfig):
-    name = "kubecom"
+    name = "apps.kubecom"
     verbose_name = "Django Kubernetes Interservice Communication Demo"
