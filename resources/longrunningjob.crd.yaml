@@ -19,7 +19,7 @@ spec:
         openAPIV3Schema:
           properties:
             args:
-              type: list
+              type: array
             kwargs:
               type: object
               x-kubernetes-preserve-unknown-fields: true
