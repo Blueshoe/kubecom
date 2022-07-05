@@ -1,4 +1,4 @@
-from django.views import View
+from django.views.generic import View, TemplateView
 
 
 class JobView(View):
@@ -12,3 +12,6 @@ class CustomResourceDefinitionView(View):
     def post(self, request):
         pass
 
+
+class HomeView(TemplateView):
+    template = "kubecom/home.html"
