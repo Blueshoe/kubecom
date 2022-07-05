@@ -1,0 +1,76 @@
+version: "1"
+
+cluster:
+  provider: k3d
+  minVersion: 4.0.0
+  name: django
+  nativeConfig:
+    apiVersion: k3d.io/v1alpha2
+    kind: Simple
+    servers: 1
+    agents: 1
+    image: rancher/k3s:v1.22.9-k3s1
+    ports:
+      - port: 8080:80
+        nodeFilters:
+          - loadbalancer
+      - port: 8443:443
+        nodeFilters:
+          - loadbalancer
+      - port: 31820:31820/UDP
+        nodeFilters:
+          - agent[0]
+
+decks:
+  - name: kubecom
+    namespace: default
+    notes: |
+      
+      Welcome to the kubecom demo application. Once the app is ready you can:
+      
+      - enter django admin at: http://kubecom.127.0.0.1.nip.io:8080/admin
+        if you want to enter the django admin, please make sure you create yourself an admin account running: kubectl exec -it <pod> -- python manage.py create superuser
+
+      Go to https://django-hurricane.io/basic-app/ to read on about django-hurricane and this demo application.
+    sources:
+      # This is a the PostgreSQL Database
+      - type: helm
+        ref: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+        chart: postgres-operator
+        releaseName: postgres-operator
+      - type: file
+        content:
+          apiVersion: "acid.zalan.do/v1"
+          kind: postgresql
+          metadata:
+            name: django-psql-cluster
+            namespace: default
+          spec:
+            teamId: "django"
+            volume:
+              size: 1Gi
+            numberOfInstances: 1
+            users:
+              django: # database owner
+                - superuser
+                - createdb
+              django_user: [ ]  # role for application foo
+            databases:
+              django: django  # dbname: owner
+            preparedDatabases:
+              bar: { }
+            postgresql:
+              version: "14"
+      # The workloads for the django kubecom demo
+      - type: file
+        ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/longrunningjob.crd.yaml
+      - type: file
+        ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/configmap.yaml
+      - type: file
+        ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/service.yaml
+      - type: file
+        ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/deployment.yaml
+      - type: file
+        ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/ingress.yaml
+      - type: file
+        ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/job.yaml

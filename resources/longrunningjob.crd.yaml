@@ -1,0 +1,28 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: longrunningjob.blueshoe.de
+spec:
+  group: blueshoe.de
+  names:
+    kind: LongRunningJob
+    listKind: LongRunningJobList
+    singular: longrunningjob
+    plural: longrunningjobs
+    shortNames:
+      - lrj
+      - lrjs
+  scope: Namespaced
+  versions:
+    - name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            args:
+              type: list
+            kwargs:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+          type: object
+      served: true
+      storage: true

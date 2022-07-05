@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubecom-ingress
+  annotations: {}
+spec:
+  rules:
+    - host: kubecom.127.0.0.1.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: kubecom
+                port:
+                  number: 8080
