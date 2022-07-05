@@ -23,7 +23,7 @@ cluster:
 
 decks:
   - name: kubecom
-    namespace: default
+    namespace: kubecom
     notes: |
       
       Welcome to the kubecom demo application. Once the app is ready you can:
