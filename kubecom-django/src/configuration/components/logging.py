@@ -1,11 +1,12 @@
 # Logging
 # https://docs.djangoproject.com/en/3.2/topics/logging/
 
+import structlog
+
 # See also:
 # "Do not log" by Nikita Sobolev (@sobolevn)
 # https://sobolevn.me/2020/03/do-not-log
 from decouple import config
-import structlog
 
 LOGGING = {
     "version": 1,

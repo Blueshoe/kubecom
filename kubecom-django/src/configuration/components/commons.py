@@ -5,12 +5,11 @@ For the full list of settings and their config, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-from django.utils.translation import ugettext_lazy as _
 
 from decouple import config
+from django.utils.translation import ugettext_lazy as _
 
 from configuration.components import BASE_DIR
-
 
 DEBUG = config("DJANGO_DEBUG", cast=bool, default=False)
 
