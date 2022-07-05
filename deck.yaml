@@ -3,7 +3,7 @@ version: "1"
 cluster:
   provider: k3d
   minVersion: 4.0.0
-  name: django
+  name: kubecom
   nativeConfig:
     apiVersion: k3d.io/v1alpha2
     kind: Simple
