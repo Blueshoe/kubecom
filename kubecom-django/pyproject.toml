@@ -25,6 +25,7 @@ psycopg2-binary = "<2.9"
 python-decouple = "^3.4"
 bcrypt = "^3.2"
 structlog = "^21.1"
+kubernetes = "^24.2.0"
 
 
 [tool.poetry.dev-dependencies]
