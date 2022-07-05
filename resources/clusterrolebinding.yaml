@@ -1,0 +1,29 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+    name: "longrunningjob:blueshoe.de:operator-crb"
+    namespace: "kubecom"
+roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: "longrunningjob:blueshoe.de:operator"
+subjects:
+    - kind: ServiceAccount
+      name: "longrunningjob:blueshoe.de:operator-sa"
+      namespace: "kubecom"
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+    name: "deployments:operator-crb"
+    namespace: "kubecom"
+roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: "deployments:operator-crb"
+subjects:
+    - kind: ServiceAccount
+      name: "deployments:operator-sa"
+      namespace: "kubecom"

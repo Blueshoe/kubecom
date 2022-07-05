@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: "longrunningjob:blueshoe.de:operator"
+  namespace: "kubecom"
+rules:
+  - apiGroups: ["blueshoe.de"]
+    resources: ["longrunningjob"]
+    verbs: ["*"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: "deployments:operator"
+  namespace: "kubecom"
+rules:
+  - apiGroups: ["", "apps", "batch", "extensions"]
+    resources: ["pods", "jobs", "deployments"]
+    verbs: ["*"]
+  - apiGroups: ["blueshoe.de"]
+    resources: ["longrunningjob"]
+    verbs: ["*"]
