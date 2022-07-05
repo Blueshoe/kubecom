@@ -3,7 +3,6 @@ from datetime import datetime
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.urls import reverse
 from kubernetes import client, config
 from kubernetes.config.config_exception import ConfigException
 
@@ -21,7 +20,7 @@ class CustomResourceDefinitionView(View):
 
     def post(self, request):
 
-        namespace = os.getenv("POD_NAMESPACE", "default")
+        namespace = os.getenv("POD_NAMESPACE", "kubecom")
         try:
             config.load_incluster_config()
             app = client.CustomObjectsApi()
@@ -31,14 +30,14 @@ class CustomResourceDefinitionView(View):
             app.create_namespaced_custom_object(
                 namespace=namespace,
                 body={
-                    "apiVersion": "winter-company.com/v1",
+                    "apiVersion": "blueshoe.de/v1",
                     "kind": "LongRunningJob",
                     "metadata": {
-                        "name": "lorojo-" + datetime.now().strftime("%Y%m%d%H%M%S"),
+                        "name": "lo-ru-jo-" + datetime.now().strftime("%Y%m%d%H%M%S"),
                         "namespace": namespace,
                     },
                     "spec": {
-                        "args": [1, 2, 3],
+                        "args": ["1", "2", "3"],
                         "kwargs": {
                             "foo": "bar"
                         }

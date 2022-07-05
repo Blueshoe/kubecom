@@ -5,7 +5,7 @@ metadata:
   namespace: "kubecom"
 rules:
   - apiGroups: ["blueshoe.de"]
-    resources: ["longrunningjob"]
+    resources: ["longrunningjobs"]
     verbs: ["*"]
 
 ---
@@ -20,5 +20,5 @@ rules:
     resources: ["pods", "jobs", "deployments"]
     verbs: ["*"]
   - apiGroups: ["blueshoe.de"]
-    resources: ["longrunningjob"]
+    resources: ["longrunningjobs"]
     verbs: ["*"]
