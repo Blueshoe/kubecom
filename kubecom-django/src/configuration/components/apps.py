@@ -17,6 +17,7 @@ INSTALLED_APPS: Tuple[str, ...] = (
     # Extensions and 3rd Party Apps:
     "django_extensions",
     # Your Apps:
+    "apps.kubecom",
 )
 
 if DEBUG:
