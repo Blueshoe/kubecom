@@ -21,7 +21,7 @@ spec:
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
-          image: "quay.io/django-hurricane/kubecom-demo:latest"
+          image: "quay.io/blueshoe/kubecom-demo:latest"
           imagePullPolicy: Always
           command: ["/bin/sh","-c"]
           args: ["python manage.py serve

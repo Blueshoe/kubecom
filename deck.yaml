@@ -72,5 +72,3 @@ decks:
         ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/deployment.yaml
       - type: file
         ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/ingress.yaml
-      - type: file
-        ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/job.yaml
