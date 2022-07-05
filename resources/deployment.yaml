@@ -16,7 +16,7 @@ spec:
       securityContext:
         fsGroup: 1000
         runAsUser: 1000
-      serviceAccountName: "longrunningjob:blueshoe.de:operator-sa"
+      serviceAccountName: "operator-sa"
       containers:
         - name: kubecom
           securityContext:
