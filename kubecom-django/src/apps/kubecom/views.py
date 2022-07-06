@@ -65,4 +65,4 @@ class CustomResourceDefinitionView(View):
 
 
 class HomeView(TemplateView):
-    template = "kubecom/home.html"
+    template_name = "kubecom/home.html"
