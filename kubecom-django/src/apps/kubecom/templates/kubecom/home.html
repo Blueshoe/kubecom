@@ -9,6 +9,13 @@
 
 
 <main class="container text-center mt-5 ">
+    {% if messages %}
+        <ul class="messages row mb-5">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
   <div class="row mb-5">
     <div class="col-12">
       <h1>Django Kubernetes <br> Interservice Communication Demo</h1>
@@ -16,13 +23,13 @@
   </div>
   <div class="row">
     <div class="col-6">
-      <form action="{% url '' %}" method="post">
+      <form action="{% url "job" %}" method="post">
         {% csrf_token %}
         <button class="btn btn-primary" type="submit">Trigger via Job</button>
       </form>
     </div>
     <div class="col-6">
-      <form action="{% url '' %}" method="post">
+      <form action="{% url "crd" %}" method="post">
         {% csrf_token %}
         <button class="btn btn-primary" type="submit">Trigger via CRD</button>
       </form>
