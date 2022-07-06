@@ -75,3 +75,5 @@ decks:
         ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/clusterrole.yaml
       - type: file
         ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/clusterrolebinding.yaml
+      - type: file
+        ref: https://raw.githubusercontent.com/Blueshoe/kubecom/main/resources/serviceaccount.yaml

@@ -25,5 +25,5 @@ roleRef:
   name: "deployments:operator"
 subjects:
   - kind: ServiceAccount
-    name: "deployments-sa"
+    name: "longrunningjob-sa"
     namespace: "kubecom"

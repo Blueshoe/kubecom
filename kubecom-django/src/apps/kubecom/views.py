@@ -27,13 +27,14 @@ class CustomResourceDefinitionView(View):
         except ConfigException:
             app = None
         try:
+            job_name = "lo-ru-jo-" + datetime.now().strftime("%Y%m%d%H%M%S")
             app.create_namespaced_custom_object(
                 namespace=namespace,
                 body={
                     "apiVersion": "blueshoe.de/v1",
                     "kind": "LongRunningJob",
                     "metadata": {
-                        "name": "lo-ru-jo-" + datetime.now().strftime("%Y%m%d%H%M%S"),
+                        "name": job_name,
                         "namespace": namespace,
                     },
                     "spec": {
@@ -50,7 +51,7 @@ class CustomResourceDefinitionView(View):
             messages.add_message(
                 request,
                 messages.INFO,
-                "The long running job has been triggered. " 
+                f"The long running job '{job_name}' has been triggered. " 
                 "This takes a while to complete.",
             )
         except Exception:

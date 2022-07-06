@@ -19,6 +19,3 @@ rules:
   - apiGroups: ["", "apps", "batch", "extensions"]
     resources: ["pods", "jobs", "deployments"]
     verbs: ["*"]
-  - apiGroups: ["blueshoe.de"]
-    resources: ["longrunningjobs"]
-    verbs: ["*"]
